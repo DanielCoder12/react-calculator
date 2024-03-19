@@ -3,43 +3,44 @@ import { useState } from "react"
 
 export function Calculator(){
 
-        const [display, setDisplay] = useState('')
-        function changeNum(n){
-            num = num += n
-            console.log(num)
-        }
-    let num = 0
+        const [value, setValue] = useState('')
+        
 
 return (<>
-    <div>
+    <div className="container-fluid d-flex justiy-content-center align-items-center">
         <div className="calculator">
 <form action="">
-    <div>
-        <input type="text" />
+    <div className="display">
+        <input type="text" value={value} readOnly />
     </div>
     <div>
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
+        <input type="button" value='AC' onClick={()=> setValue('')}/>
+        <input type="button" value={'DE'} onClick={()=> setValue(value.slice(0, -1))} />
+        <input type="button" value={'.'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'/'} onClick={e=> setValue(value+e.target.value)}/>
     </div>
     <div>
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
+        <input type="button" value={'7'} onClick={e=> setValue(value+e.target.value)} />
+        <input type="button" value={'8'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'9'} onClick={e=> setValue(value+e.target.value)}/>
+        {/* <input type="button" value={'*'} onClick={value.includes('*') ? ()=> setValue(value.slice(0,-1)):e=> setValue(value+ e.target.value)}/> */}
     </div>
     <div>
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
+        <input type="button" value={'4'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'5'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'6'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'+'} onClick={e=> setValue(value+e.target.value)}/>
     </div>
     <div>
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
-        <input type="button" value={'C'} />
+        <input type="button" value={'1'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'2'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'3'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'-'} onClick={e=> setValue(value+e.target.value)}/>
+    </div>
+    <div>
+        <input type="button" value={'00'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'0'} onClick={e=> setValue(value+e.target.value)}/>
+        <input type="button" value={'='} className="equal " onClick={()=> setValue(eval(value))}/>
     </div>
 </form>
         </div>

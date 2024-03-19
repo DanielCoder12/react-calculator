@@ -4,7 +4,7 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 
-body{
+body {
   overscroll-behavior: none;
 }
 
@@ -30,6 +30,7 @@ select {
     &:valid {
       border: 1px solid $success;
     }
+
     &:invalid {
       border: 1px solid $danger;
     }
@@ -39,4 +40,38 @@ select {
 form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
+}
+
+.calculator {
+  background-color: white;
+  padding: 3px;
+}
+
+form input {
+  height: 60px;
+  aspect-ratio: 1/1;
+  margin: 3px;
+  border-radius: 10px;
+  background-color: rgb(54, 50, 50);
+  color: white;
+  cursor: pointer;
+}
+
+form input[type="button"]:hover {
+  background-color: rgb(1, 1, 1);
+}
+
+form .display {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form .display input {
+  text-align: right;
+  flex: 1;
+  cursor: default;
+}
+
+form input.equal {
+  width: 120px;
 }
